@@ -15,7 +15,7 @@ jobs:
   build:
     defaults:
         run:
-          working-directory: dart_project
+          working-directory: /app/sue_tutor/
     runs-on: ubuntu-latest
 
     steps:
@@ -32,4 +32,3 @@ jobs:
     - run: flutter build apk
     - run: flutter build appbundle
     - run: flutter build web
-    - working-directory: /app/sue_tutor/
