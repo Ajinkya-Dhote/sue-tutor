@@ -35,6 +35,11 @@ jobs:
         path: app/sue_tutor/build/app/outputs/flutter-apk/app-release.apk
         
     - run: flutter build appbundle
+    - uses: actions/upload-artifact@v2
+      with:
+        name: abb-release
+        path: app/sue_tutor/build/app/outputs/bundle/release/app-release.aab
+        
     - run: flutter build web
     
     
@@ -50,3 +55,7 @@ jobs:
         flutter-version: '2.10.2'
     - run: flutter pub get
     - run: flutter build ios --release --no-codesign
+    - uses: actions/upload-artifact@v2
+      with:
+        name: ios-app-release
+        path: /Users/runner/work/sue-tutor/sue-tutor/app/sue_tutor/build/ios/iphoneos/Runner.app
