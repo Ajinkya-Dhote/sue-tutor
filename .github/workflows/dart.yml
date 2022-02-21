@@ -29,6 +29,11 @@ jobs:
         flutter-version: '2.10.2'
     - run: flutter pub get
     - run: flutter build apk
+    - name: upload apk file
+    - uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: build/app/outputs/flutter-apk/app-release.apk
     - run: flutter build appbundle
     - run: flutter build web
     
