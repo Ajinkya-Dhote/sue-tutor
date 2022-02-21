@@ -32,7 +32,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: apk-release
-        path: build/app/outputs/flutter-apk/app-release.apk
+        path: app/sue_tutor/build/app/outputs/flutter-apk/app-release.apk
         
     - run: flutter build appbundle
     - run: flutter build web
