@@ -33,6 +33,9 @@ jobs:
     - run: flutter build web
     
   ios:
+    defaults:
+        run:
+          working-directory: app/sue_tutor/
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
