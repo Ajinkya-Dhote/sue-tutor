@@ -15,7 +15,7 @@ jobs:
   build:
     defaults:
         run:
-          working-directory: /app/sue_tutor/
+          working-directory: sue-tutor/app/sue_tutor/
     runs-on: ubuntu-latest
 
     steps:
