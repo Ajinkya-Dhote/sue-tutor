@@ -1,0 +1,102 @@
+[
+	{
+		"name": "Red",
+		"color": "0xffFFEBEE",
+		"brightness": "light"
+	},
+	{
+		"name": "Pink",
+		"color": "0xffFCE4EC",
+		"brightness": "light"
+	},
+	{
+		"name": "Pink",
+		"color": "0xffFCE4EC",
+		"brightness": "light"
+	},
+	{
+		"name": "Purple",
+		"color": "0xffF3E5F5",
+		"brightness": "light"
+	},
+	{
+		"name": "Deep Purple",
+		"color": "0xffEDE7F6",
+		"brightness": "light"
+	},
+	{
+		"name": "Indigo",
+		"color": "0xffE8EAF6",
+		"brightness": "light"
+	},
+	{
+		"name": "Blue",
+		"color": "0xffE3F2FD",
+		"brightness": "light"
+	},
+	{
+		"name": "Light Blue",
+		"color": "0xffE1F5FE",
+		"brightness": "light"
+	},
+	{
+		"name": "Cyan",
+		"color": "0xffE0F7FA",
+		"brightness": "light"
+	},
+	{
+		"name": "Teal",
+		"color": "0xffE0F2F1",
+		"brightness": "light"
+	},
+	{
+		"name": "Green",
+		"color": "0xffE8F5E9",
+		"brightness": "light"
+	},
+	{
+		"name": "Light Green",
+		"color": "0xffF1F8E9",
+		"brightness": "light"
+	},
+	{
+		"name": "Lime",
+		"color": "0xffF9FBE7",
+		"brightness": "light"
+	},
+	{
+		"name": "Yellow",
+		"color": "0xffFFFDE7",
+		"brightness": "light"
+	},
+	{
+		"name": "Amber",
+		"color": "0xffFFF8E1",
+		"brightness": "light"
+	},
+	{
+		"name": "Orange",
+		"color": "0xffFFF3E0",
+		"brightness": "light"
+	},
+	{
+		"name": "Deep Orange",
+		"color": "0xffFBE9E7",
+		"brightness": "light"
+	},
+	{
+		"name": "Brown",
+		"color": "0xffEFEBE9",
+		"brightness": "light"
+	},
+	{
+		"name": "Gray",
+		"color": "0xffFAFAFA",
+		"brightness": "light"
+	},
+	{
+		"name": "Blue Gray",
+		"color": "0xffECEFF1",
+		"brightness": "light"
+	}
+]
