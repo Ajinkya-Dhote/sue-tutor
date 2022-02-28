@@ -3,7 +3,8 @@ package com.suniteducation.preferenceservice.service;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.springframework.http.ResponseEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -13,6 +14,7 @@ import com.suniteducation.preferenceservice.model.Theme;
 
 @Service
 public class GlobalpreferenceServiceImpl implements GlobalpreferenceService {
+	Logger logger = LoggerFactory.getLogger(GlobalpreferenceServiceImpl.class);
 
 	@Override
 	public GlobalPreference getGloablPreference() {
@@ -28,7 +30,7 @@ public class GlobalpreferenceServiceImpl implements GlobalpreferenceService {
 			themes = mapper.readValue(in, Theme[].class);
 			gPref.setTheme(themes);
 		} catch (IOException ex) {
-			System.out.println(ex);
+			logger.error("Error in GlobalPreferenceServiceImpl: ", ex);
 		}
 		return gPref;
 
