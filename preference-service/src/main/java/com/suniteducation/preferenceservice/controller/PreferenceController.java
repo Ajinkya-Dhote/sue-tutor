@@ -1,6 +1,7 @@
 package com.suniteducation.preferenceservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +17,8 @@ public class PreferenceController {
 	GlobalpreferenceService globalPrefService;
 	
 	@GetMapping
-	public GlobalPreference getGlobalPreference() {
-		return globalPrefService.getGloablPreference();
+	public ResponseEntity<GlobalPreference> getGlobalPreference() {
+		return ResponseEntity.ok(globalPrefService.getGloablPreference());
 	}
 
 }
