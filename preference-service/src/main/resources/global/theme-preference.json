@@ -1,102 +1,97 @@
 [
 	{
 		"name": "Red",
-		"color": "0xffFFEBEE",
+		"color": "F44336",
 		"brightness": "light"
 	},
 	{
 		"name": "Pink",
-		"color": "0xffFCE4EC",
-		"brightness": "light"
-	},
-	{
-		"name": "Pink",
-		"color": "0xffFCE4EC",
+		"color": "E91E63",
 		"brightness": "light"
 	},
 	{
 		"name": "Purple",
-		"color": "0xffF3E5F5",
+		"color": "9C27B0",
 		"brightness": "light"
 	},
 	{
 		"name": "Deep Purple",
-		"color": "0xffEDE7F6",
+		"color": "673AB7",
 		"brightness": "light"
 	},
 	{
 		"name": "Indigo",
-		"color": "0xffE8EAF6",
+		"color": "3F51B5",
 		"brightness": "light"
 	},
 	{
 		"name": "Blue",
-		"color": "0xffE3F2FD",
+		"color": "2196F3",
 		"brightness": "light"
 	},
 	{
 		"name": "Light Blue",
-		"color": "0xffE1F5FE",
+		"color": "03A9F4",
 		"brightness": "light"
 	},
 	{
 		"name": "Cyan",
-		"color": "0xffE0F7FA",
+		"color": "00BCD4",
 		"brightness": "light"
 	},
 	{
 		"name": "Teal",
-		"color": "0xffE0F2F1",
+		"color": "009688",
 		"brightness": "light"
 	},
 	{
 		"name": "Green",
-		"color": "0xffE8F5E9",
+		"color": "4CAF50",
 		"brightness": "light"
 	},
 	{
 		"name": "Light Green",
-		"color": "0xffF1F8E9",
+		"color": "8BC34A",
 		"brightness": "light"
 	},
 	{
 		"name": "Lime",
-		"color": "0xffF9FBE7",
+		"color": "CDDC39",
 		"brightness": "light"
 	},
 	{
 		"name": "Yellow",
-		"color": "0xffFFFDE7",
+		"color": "FFEB3B",
 		"brightness": "light"
 	},
 	{
 		"name": "Amber",
-		"color": "0xffFFF8E1",
+		"color": "FFC107",
 		"brightness": "light"
 	},
 	{
 		"name": "Orange",
-		"color": "0xffFFF3E0",
+		"color": "FF9800",
 		"brightness": "light"
 	},
 	{
 		"name": "Deep Orange",
-		"color": "0xffFBE9E7",
+		"color": "FF5722",
 		"brightness": "light"
 	},
 	{
 		"name": "Brown",
-		"color": "0xffEFEBE9",
+		"color": "795548",
 		"brightness": "light"
 	},
 	{
 		"name": "Gray",
-		"color": "0xffFAFAFA",
+		"color": "9E9E9E",
 		"brightness": "light"
 	},
 	{
 		"name": "Blue Gray",
-		"color": "0xffECEFF1",
+		"color": "607D8B",
 		"brightness": "light"
 	}
 ]

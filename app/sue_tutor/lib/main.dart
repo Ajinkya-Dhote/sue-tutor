@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
 import 'package:sue_tutor/demo.dart';
 import 'package:sue_tutor/model/theme_model.dart';
@@ -7,6 +8,21 @@ void main() {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => ThemeModel()),
   ], child: const MyApp()));
+  configLoading();
+}
+
+void configLoading() {
+  EasyLoading.instance
+    ..indicatorType = EasyLoadingIndicatorType.fadingCircle
+    ..indicatorSize = 45.0
+    ..radius = 10.0
+    ..progressColor = Colors.amber
+    ..backgroundColor = Colors.amber
+    ..indicatorColor = Colors.yellow
+    ..textColor = Colors.yellow
+    ..maskColor = Colors.blue.withOpacity(0.5)
+    ..userInteractions = true
+    ..dismissOnTap = false;
 }
 
 class MyApp extends StatelessWidget {
@@ -35,6 +51,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           home: const Demo(),
+          builder: EasyLoading.init(),
         );
       }),
     );
