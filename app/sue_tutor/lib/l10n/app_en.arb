@@ -1,0 +1,15 @@
+{
+    "helloWorld": "Hello World!",
+    "@helloWorld": {
+      "description": "The conventional newborn programmer greeting"
+    },
+    "theme": "Theme",
+    "settings": "Settings",
+    "language": "Select Language",
+    "englishLanguage": "English",
+    "marathiLanguage": "मराठी",
+    "hindiLanguage": "हिन्दी",
+    "kannadaLanguage": "ಕನ್ನಡ",
+    "gujratiLanguage": "ગુજરાતી",
+    "bengaliLanguage": "বাংলা"
+}
