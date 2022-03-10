@@ -12,7 +12,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  android:
     defaults:
         run:
           working-directory: app/sue_tutor/
@@ -28,6 +28,7 @@ jobs:
       with:
         flutter-version: '2.10.2'
     - run: flutter pub get
+    - run: flutter gen-l10n
     - run: flutter build apk
     - uses: actions/upload-artifact@v2
       with:
@@ -54,6 +55,7 @@ jobs:
       with:
         flutter-version: '2.10.2'
     - run: flutter pub get
+    - run: flutter gen-l10n
     - run: flutter build ios --release --no-codesign
     - uses: actions/upload-artifact@v2
       with:
