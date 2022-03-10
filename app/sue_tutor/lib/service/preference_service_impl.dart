@@ -11,13 +11,8 @@ class PreferenceServiceImpl implements PreferenceService {
     final response = await http.get(Uri.parse('http://192.168.1.18:8080/'));
 
     if (response.statusCode == 200) {
-      print(response.toString());
       final parsed = json.decode(response.body);
       return GlobalPreference.fromJson(parsed);
-
-      // return parsed
-      //     .map<GlobalPreference>((json) => GlobalPreference.fromJson(json))
-      //     .toList();
     } else {
       throw Exception('Failed to load preference');
     }

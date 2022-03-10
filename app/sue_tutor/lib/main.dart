@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
-import 'package:sue_tutor/demo.dart';
+import 'package:sue_tutor/ColorChooser.dart';
+import 'package:sue_tutor/components/settings/settings.dart';
+import 'package:sue_tutor/model/locale_model.dart';
 import 'package:sue_tutor/model/theme_model.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => ThemeModel()),
+    ChangeNotifierProvider(create: (context) => LocaleModel()),
   ], child: const MyApp()));
   configLoading();
 }
@@ -31,12 +36,28 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final languageNotifier = Provider.of<LocaleModel>(context, listen: true);
     return ChangeNotifierProvider(
       create: (BuildContext context) => ThemeModel(),
       child: Consumer<ThemeModel>(
           builder: (context, ThemeModel themeNotifier, child) {
         return MaterialApp(
           title: 'Flutter Demo',
+          locale: languageNotifier.getAppLoacele(),
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('en', ''), // English, no country code
+            Locale('mr', ''), // marathi
+            Locale('hi', ''), //hindi
+            Locale('kn', ''), // Kannad
+            Locale('gu', ''), //gujrati
+            Locale('bn', '') //bengali (bangla)
+          ],
           theme: ThemeData(
             // This is the theme of your application.
             //
@@ -50,7 +71,7 @@ class MyApp extends StatelessWidget {
             colorScheme: context.watch<ThemeModel>().getTheme(),
             useMaterial3: true,
           ),
-          home: const Demo(),
+          home: const Settings(),
           builder: EasyLoading.init(),
         );
       }),

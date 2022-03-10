@@ -19,3 +19,6 @@ samples, guidance on mobile development, and a full API reference.
 ### References
 1. Applying dynamic themeing to app
   > https://www.flutterant.com/switching-themes-in-flutter-apps/
+
+  ### Generate locales
+  > flutter gen-l10n
