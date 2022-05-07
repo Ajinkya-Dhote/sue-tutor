@@ -1,0 +1,29 @@
+server:
+  port: 8286
+  servlet:
+    session:
+      timeout: 2m
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+         google:
+          clientId: 109246865167-13k074aleg3mfujonpr3gg6dbapt05cg.apps.googleusercontent.com
+          clientSecret: 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
+          scope:
+           - email
+           - profile
+  datasource:
+    url: jdbc:h2:mem:mydb;IFEXISTS=FALSE;
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
