@@ -3,9 +3,7 @@ import ReactDOM from "react-dom/client";
 import {
   BrowserRouter,
   Routes,
-  Route,
-  Link,
-  Outlet
+  Route
 } from "react-router-dom";
 import './index.css';
 import App from './App';
@@ -26,6 +24,7 @@ import About from './components/About/About';
 import SettingsHome from './components/Settings/SettingsHome';
 import AppSettings from './components/Settings/AppSettings';
 import ProfileSetttings from './components/Settings/ProfileSettings';
+import Login from './components/Login/Login';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -40,7 +39,9 @@ root.render(
               <Route index element={<ProfileSetttings />}> </Route>
               <Route path="app-settings" element={<AppSettings />}> </Route>
             </Route>
+           
           </Route>
+           <Route path="login" element={<Login />} />
             {/* <Route index element={<Home />} /> */}
           
         </Routes>

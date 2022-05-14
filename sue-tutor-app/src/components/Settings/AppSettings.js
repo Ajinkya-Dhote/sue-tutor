@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Box, Card, CardContent, createTheme, Divider, FormControl, FormControlLabel, FormGroup, Grid, InputLabel, MenuItem, Paper, Select, Switch, Typography } from "@mui/material";
-import { grey } from "@mui/material/colors";
+import { Box, Card, CardContent, FormControl, FormControlLabel, FormGroup, Grid, InputLabel, MenuItem, Select, Switch, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMode, setTheme } from "../../store/features/themeSlice";
@@ -13,7 +12,6 @@ export default function AppSettings() {
     }
 
     const themes = useSelector(state => state.theme.themes);
-    // console.log(themes);
 
     const [language, setLanguage] = React.useState('');
 

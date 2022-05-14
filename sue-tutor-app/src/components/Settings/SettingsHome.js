@@ -1,4 +1,4 @@
-import { BottomNavigation, BottomNavigationAction, Box, Container, CssBaseline, Divider, Grid, Icon, List, ListItem, ListItemButton, ListItemIcon, ListItemText, SvgIcon } from "@mui/material";
+import { BottomNavigation, BottomNavigationAction, Paper } from "@mui/material";
 import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -10,7 +10,6 @@ export default function SettingsHome() {
 
     
     const checkCurrentActiveRoute = (menues, location) => {
-        console.log(location);
         return menues.findIndex(menu => menu.path === location.pathname) || 0
 
     };
@@ -36,7 +35,7 @@ export default function SettingsHome() {
     return (
         <>
         <Outlet />
-        <Box >
+        <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
                     <BottomNavigation  color="primary"
                         showLabels
                         value={value}
@@ -48,7 +47,7 @@ export default function SettingsHome() {
                             <BottomNavigationAction key={menu.name} label={menu.name} icon={menu.icon} onClick={() => navigate(menu.route)}/>
                         ))}
                     </BottomNavigation>
-                </Box>
+                </Paper>
         </>
         
     )

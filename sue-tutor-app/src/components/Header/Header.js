@@ -3,19 +3,17 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import { useTranslation } from 'react-i18next';
 
-import SettingsMenu from '../Settings/SettingsMenu';
-import SettingsHome from '../Settings/SettingsHome';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { AccountCircle } from '@mui/icons-material';
 import SearchIcon from '@mui/icons-material/Search';
-import { InputAdornment, styled, TextField } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
+import { InputAdornment, Link, styled, TextField } from '@mui/material';
+import { useSelector } from 'react-redux'
 
 function Header() {
+  const name = useSelector(state => state.customer.info)
   const { t, i18n } = useTranslation();
   const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -48,13 +46,21 @@ function Header() {
   });
 
     return (
-        <Box sx={{ flexGrow: 1 }} className="header">
+        <Box className="header">
         <AppBar position="static" sx={{borderBottomLeftRadius: 15, borderBottomRightRadius: 15, pb: 1}}>
           <Toolbar>
             <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-              {/* {t('welcome')} */}
-              Hi, User
+              {t('welcome')} {name.name}
+              {/* Hi, User */}
             </Typography>
+            <Link to="/"
+
+          >
+            <HomeIcon sx={{ color: '#fff' }}/>
+          </Link>
+            {/* <IconButton onClick={() => navigate()}>
+                <HomeIcon sx={{ color: '#fff' }}/>
+            </IconButton> */}
             <IconButton >
                 <NotificationsIcon sx={{ color: '#fff' }}/>
             </IconButton>

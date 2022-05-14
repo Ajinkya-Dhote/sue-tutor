@@ -1,17 +1,5 @@
 import { amber, blue, blueGrey, brown, cyan, deepOrange, deepPurple, green, grey, indigo, lightBlue, lightGreen, lime, orange, pink, purple, red, teal, yellow } from '@mui/material/colors';
 import { createSlice } from '@reduxjs/toolkit'
-import store from '../store';
-
-// const mode = store.getState().mode;
-let blueTheme = {
-    palette: {
-      mode: 'light',
-      primary: {
-        main: '#3f51b5',
-  
-      }
-    }
-};
 
 let themes = [];
 [
