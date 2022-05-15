@@ -1,5 +1,7 @@
 package com.suetutor.service;
 
+import java.util.List;
+
 import com.suetutor.model.User;
 
 public interface UserService {
@@ -11,4 +13,6 @@ public interface UserService {
 	User fetchByUsername(String username);
 
 	void save(User user);
+	
+	List<User> fetchAll();
 }

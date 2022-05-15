@@ -1,0 +1,15 @@
+type User {
+	id: ID!
+	firstName: String,
+	lastName: String,
+	username: String,
+	password: String,
+	mobileNumber: Long,
+	createdOn: Long,
+	modifiedOn: Long,
+	lastLoginTime: Long
+}
+
+type Query {
+	users: [User]
+}

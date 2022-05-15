@@ -1,6 +1,8 @@
 package com.suetutor.service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -34,6 +36,12 @@ public class UserServiceImpl implements UserService {
 			return user.get();
 		}
 		return null;
+	}
+	
+	public List<User> fetchAll() {
+		List<User> users = new ArrayList<User>();
+		repo.findAll().forEach(users::add);
+		return users;
 	}
 
 	public void save(User user) {

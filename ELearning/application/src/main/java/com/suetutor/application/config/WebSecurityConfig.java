@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.cors()
 		.and().authorizeRequests()
-		.antMatchers("/", "/user/register", "/register").permitAll()
+		.antMatchers("/", "/user/register", "/register", "/graphql").permitAll()
 		.antMatchers("/h2-console/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
