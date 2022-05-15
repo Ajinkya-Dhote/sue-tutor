@@ -1,3 +1,8 @@
 *.project
 .settings/
 .vscode/
+/target/
+/.classpath
+/*.project
+/.settings
+/*.springBeans

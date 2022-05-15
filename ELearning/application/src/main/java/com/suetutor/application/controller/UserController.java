@@ -29,11 +29,11 @@ public class UserController {
 		return userService.fetch(id);
 	}
 
-	@GetMapping("/fetch")
-	@ResponseBody User fetch(@RequestParam String username) {
-		LOGGER.info("fetch({})", username);
-		return userService.fetchByUsername(username);
-	}
+//	@GetMapping("/fetch")
+//	@ResponseBody User fetch(@RequestParam String username) {
+//		LOGGER.info("fetch({})", username);
+//		return userService.fetchByUsername(username);
+//	}
 
 	@PostMapping(value = "/register")
 	public String register(User user) {
