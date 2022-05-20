@@ -1,10 +1,14 @@
 package com.suetutor.application.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,21 +28,21 @@ public class UserController {
 	private UserService userService;
 
 	@GetMapping("/fetch")
-	@ResponseBody User fetch(@RequestParam Long id) {
+	@ResponseBody List<User> fetch() {
+		LOGGER.info("fetchAll()");
+		return userService.fetchAll();
+	}
+
+	@GetMapping("/fetch/{id}")
+	@ResponseBody User fetch(@PathVariable Long id) {
 		LOGGER.info("fetch({})", id);
 		return userService.fetch(id);
 	}
 
-//	@GetMapping("/fetch")
-//	@ResponseBody User fetch(@RequestParam String username) {
-//		LOGGER.info("fetch({})", username);
-//		return userService.fetchByUsername(username);
-//	}
-
 	@PostMapping(value = "/register")
-	public String register(User user) {
+	@ResponseBody ResponseEntity<?> register(User user) {
 		LOGGER.info("register({})", user);
 		userService.save(user);
-		return "login";
+		return ResponseEntity.ok().build();
 	}
 }

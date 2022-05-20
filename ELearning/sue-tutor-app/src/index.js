@@ -12,6 +12,14 @@ import reportWebVitals from './reportWebVitals';
 import './i18n';
 import { Provider } from 'react-redux'
 
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql
+} from "@apollo/client";
+
 import store from './store/store';
 
 import '@fontsource/roboto/300.css';
@@ -28,32 +36,43 @@ import Login from './components/Login/Login';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+const client = new ApolloClient({
+  uri: '/app/graphql',
+  cache: new InMemoryCache(),
+  headers: {
+    authorization: "Bearer "+ localStorage.getItem("token")
+  }
+});
+
+
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App/>}>
-            <Route path="about" element={<About />} />
-            <Route path="settings" element={<SettingsHome />}>
-              <Route index element={<ProfileSetttings />}> </Route>
-              <Route path="app-settings" element={<AppSettings />}> </Route>
-            </Route>
-           
-          </Route>
-           <Route path="login" element={<Login />} />
-            {/* <Route index element={<Home />} /> */}
-          
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+    <ApolloProvider client={client}>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<App/>}>
+                <Route path="about" element={<About />} />
+                <Route path="settings" element={<SettingsHome />}>
+                  <Route index element={<ProfileSetttings />}> </Route>
+                  <Route path="app-settings" element={<AppSettings />}> </Route>
+                </Route>
+              
+              </Route>
+              <Route path="login" element={<Login />} />
+                {/* <Route index element={<Home />} /> */}
+              
+            </Routes>
+          </BrowserRouter>
+        </Provider>
+    </ApolloProvider>
   </React.StrictMode>
 );  
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://cra.link/PWA
-serviceWorkerRegistration.unregister();
+serviceWorkerRegistration.register();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

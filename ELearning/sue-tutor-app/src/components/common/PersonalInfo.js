@@ -13,30 +13,32 @@ import {
     setAge as setAgeInStore,
     setGender as setGenderInStore
 } from "../../store/features/customerSlice";
-export default function PersonalInfo() {
+import { useTranslation } from "react-i18next";
+export default function PersonalInfo(props) {
     const dispatch = useDispatch();
+    const { t } = useTranslation();
 
+    const user = props.data;
 
-    const info = useSelector(state => state.customer.info);
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [middleName, setMiddleName] = useState('');
+    const [age, setAge] = useState(0);
+    const [gender, setGender] = useState('FEMALE');
 
-    const [name, setName] = useState(info.name);
-    const [surName, setSurName] = useState(info.surName);
-    const [middleName, setMiddleName] = useState(info.middleName);
-    const [age, setAge] = useState(info.age);
-    const [gender, setGender] = useState(info.gender);
 
     useEffect(() => {
-        setName(info.name);
-        setSurName(info.surName);
-        setMiddleName(info.middleName);
-        setAge(info.age);
-        setGender(info.gender)
-    }, [])
+        setFirstName(user.firstName);
+        setLastName(user.lastName);
+        setMiddleName(user.middleName);
+        setAge(user.age);
+        setGender(user.gender)
+    }, [user])
 
 
 
     const handleNameChnage = (event) => {
-        setName(event.target.value);
+        setFirstName(event.target.value);
         dispatch(setNameInStore(event.target.value))
     }
 
@@ -46,7 +48,7 @@ export default function PersonalInfo() {
     }
 
     const handleSurnameChnage = (event) => {
-        setSurName(event.target.value);
+        setLastName(event.target.value);
         dispatch(setSurNameInStore(event.target.value))
     }
 
@@ -65,13 +67,13 @@ export default function PersonalInfo() {
             elevation={0} variant="outlined" sx={{ mt: 1, p: 1, '& .MuiFormControl-root': { m: 2, width: '35ch' } }}
         >
 
-            <Typography>Personal Information</Typography>
-            <TextField id="standard-basic" value={name} label="Name" variant="standard" required onChange={handleNameChnage} />
-            <TextField id="standard-basic" value={middleName} label="Middle Name" variant="standard" required onChange={handleMiddleNameChnage} />
-            <TextField id="standard-basic" value={surName} label="Surname" variant="standard" required onChange={handleSurnameChnage} />
+            <Typography>{t('personal-info')}</Typography>
+            <TextField id="standard-basic" value={firstName} label={t('name')} variant="standard" required onChange={handleNameChnage} />
+            <TextField id="standard-basic" value={middleName} label={t('middleName')} variant="standard" required onChange={handleMiddleNameChnage} />
+            <TextField id="standard-basic" value={lastName} label={t('surname')} variant="standard" required onChange={handleSurnameChnage} />
             <TextField
                 id="standard-number"
-                label="Age"
+                label={t('age')}
                 value={age}
                 type="number"
                 InputLabelProps={{
@@ -83,7 +85,7 @@ export default function PersonalInfo() {
             />
 
             <FormControl>
-                <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
+                <FormLabel id="demo-row-radio-buttons-group-label">{t('gender')}</FormLabel>
                 <RadioGroup
                     row
                     aria-labelledby="demo-row-radio-buttons-group-label"
@@ -92,8 +94,8 @@ export default function PersonalInfo() {
                     onChange={handleGenderChange}
                 >
 
-                    <FormControlLabel value="female" control={<Radio />} label="Female" />
-                    <FormControlLabel value="male" control={<Radio />} label="Male" />
+                    <FormControlLabel value="FEMALE" control={<Radio />} label={t('female')} />
+                    <FormControlLabel value="MALE" control={<Radio />} label={t('male')} />
 
                 </RadioGroup>
             </FormControl>

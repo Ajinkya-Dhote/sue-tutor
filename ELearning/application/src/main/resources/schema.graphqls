@@ -1,15 +1,42 @@
+type Query {
+    bookById(id: ID): Book
+    users: [User]
+    userByUsername(username: String): User
+}
+
+type Book {
+    id: ID
+    name: String
+    pageCount: Int
+    author: Author
+}
+
+type Author {
+    id: ID
+    firstName: String
+    lastName: String
+}
+
+
 type User {
 	id: ID!
 	firstName: String,
+	middleName: String,
 	lastName: String,
+	age: Int,
+	gender: String,
 	username: String,
 	password: String,
-	mobileNumber: Long,
-	createdOn: Long,
-	modifiedOn: Long,
-	lastLoginTime: Long
+	createdOn: Float,
+	modifiedOn: Float,
+	lastLoginTime: Float
+	contact: Contact
 }
 
-type Query {
-	users: [User]
+type Contact {
+	id: ID,
+	userId: Float,
+	email: String,
+	mobileNumber: Float,
+	address: String
 }

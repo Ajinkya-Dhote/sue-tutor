@@ -9,18 +9,21 @@ import {
     setPhoneNumber as setPhoneNumberInStore,
     setLocation as setLocationInStore
 } from "../../store/features/customerSlice";
-export default function ContactInfo() {
+import { useTranslation } from "react-i18next";
 
+export default function ContactInfo(props) {
+    const { t } = useTranslation();
+    const contact = props.data;
     const info = useSelector(state => state.customer.info);
-    const [email, setEmail] = useState(info.contact.email);
-    const [phoneNumber, setPhoneNumber] = useState(info.contact.phoneNumber);
-    const [location, setLocation] = useState(info.contact.location);
+    const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [location, setLocation] = useState('');
 
     useEffect(() => {
-        setEmail(info.contact.email);
-        setPhoneNumber(info.contact.phoneNumber);
-        setLocation(info.contact.location);
-    }, [])
+        setEmail(contact.email);
+        setPhoneNumber(contact.mobileNumber);
+        setLocation(contact.address);
+    }, [contact])
 
     const dispatch = useDispatch();
     const handleEmailChange = (event) => {
@@ -43,10 +46,10 @@ export default function ContactInfo() {
             elevation={0} variant="outlined" sx={{ mt: 1, p: 1, '& .MuiFormControl-root': { m: 2, width: '35ch' } }}
         >
 
-            <Typography>Contact Details</Typography>
+            <Typography>{t('contact-details')}</Typography>
             <TextField
                 id="standard-basic"
-                label="Email" type="email"
+                label={t('email')} type="email"
                 variant="standard"
                 value={email}
                 onChange={handleEmailChange}
@@ -60,7 +63,7 @@ export default function ContactInfo() {
                 }}
 
             />
-            <TextField id="standard-basic" label="Phone Number" type="tel" variant="standard" required
+            <TextField id="standard-basic" label={t('phone-number')} type="tel" variant="standard" required
                 value={phoneNumber}
                 onChange={handlePhoneNumberChange}
                 InputProps={{
@@ -71,7 +74,7 @@ export default function ContactInfo() {
                     )
                 }}
             />
-            <TextField id="standard-basic" label="Location" variant="standard" required
+            <TextField id="standard-basic" label={t('location')} variant="standard" required
                 value={location}
                 onChange={handleLocationChange}
                 InputProps={{

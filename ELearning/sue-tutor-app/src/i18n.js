@@ -8,19 +8,70 @@ const resources = {
   en: {
     translation: {
       "welcome": "Welcome",
-      "login": "Login"
+      "login": "Login",
+      "personal-info": "",
+      "name": "Name",
+      "middleName": "Middle Name",
+      "surname": "Surname",
+      "age": "Age",
+      "gender": "Gender",
+      "female": "Female",
+      "male": "Male",
+      "contact-details": "Contact Details",
+      "email": "Email",
+      "phone-number": "Phone Number",
+      "location": "Location",
+      "academic-info": "Academic Information",
+      "academic-qualification": "Academic Qualification",
+      "academic-year": "Academic Year",
+      "prefered-subjects": "Prefered Subjects",
+      "select-prefered-subjects": "Select prefered Subjects"
     }
   },
   hi: {
     translation: {
         "welcome": "स्वागत",
-        "login": "लॉगिन"
+        "login": "लॉगिन",
+        "personal-info": "",
+        "name": "नाम",
+        "middleName": "मध्य नाम",
+        "surname": "उपनाम",
+        "age": "आयु",
+        "gender": "लिंग",
+        "female": "महिला",
+        "male": "पुरुष",
+        "contact-details": "सम्पर्क करने का विवरण",
+        "email": "ईमेल",
+        "phone-number": "फ़ोन नंबर",
+        "location": "जगह",
+        "academic-info": "शैक्षणिक सूचना",
+        "academic-qualification": "शैक्षिक योग्यता",
+        "academic-year": "शैक्षणिक वर्ष",
+        "prefered-subjects": "पसंदीदा विषय",
+        "select-prefered-subjects": "पसंदीदा विषय चुनें"
     }
   },
   mr: {
     translation: {
       "welcome": "स्वागत",
-      "login": "लॉगिन"
+      "login": "लॉगिन",
+      "personal-info": "",
+      "name": "नाव",
+      "middleName": "मधले नाव",
+      "surname": "आडनाव",
+      "age": "वय",
+      "gender": "लिंग",
+      "female": "स्त्री",
+      "male": "पुरुष",
+      "contact-details": "संपर्काची माहिती",
+      "email": "ईमेल",
+      "phone-number": "फोन नंबर",
+      "location": "स्थान",
+      "academic-info": "शैक्षणिक माहिती",
+      "academic-qualification": "शैक्षणिक पात्रता",
+      "academic-year": "शैक्षणिक वर्ष",
+      "prefered-subjects": "पसंतीचे विषय",
+      "select-prefered-subjects": "पसंतीचे विषय निवडा"
     }
   }
 };

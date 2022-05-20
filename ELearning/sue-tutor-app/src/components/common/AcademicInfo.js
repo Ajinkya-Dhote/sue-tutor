@@ -1,10 +1,12 @@
 import { InputLabel, MenuItem, Paper, Select, Typography } from "@mui/material";
 import FormControl from '@mui/material/FormControl';
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { setAcademicQualification, setAcademicYear } from "../../store/features/customerSlice";
 
 export default function AcademicInfo() {
+    const { t } = useTranslation();
     const academicQualification = [
         {
             name: 'School',
@@ -56,14 +58,14 @@ export default function AcademicInfo() {
         <Paper
             elevation={0} variant="outlined" sx={{ mt: 1, p: 1, '& .MuiFormControl-root': { m: 2, width: '35ch' } }}
         >
-            <Typography>Academic Information</Typography>
+            <Typography>{t('academic-info')}</Typography>
             <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Academic Qualification</InputLabel>
+                <InputLabel id="demo-simple-select-label">{t('academic-qualification')}</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={qualification}
-                    label="Academic Qualification"
+                    label={t('academic-qualification')}
                     onChange={handleQualificationChange}
                 >
                     {academicQualification.map((a) => <MenuItem key={a.name} value={a.value}>{a.name}</MenuItem>)}
@@ -71,12 +73,12 @@ export default function AcademicInfo() {
             </FormControl>
 
             <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Academic Year</InputLabel>
+                <InputLabel id="demo-simple-select-label">{t('academic-year')}</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={year}
-                    label="Academic Year"
+                    label={t('academic-year')}
                     onChange={handleYearChange}
                 >
                     {academicYears.map((a) => <MenuItem key={a.name} value={a.value}>{a.name}</MenuItem>)}

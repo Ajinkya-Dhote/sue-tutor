@@ -7,8 +7,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import com.suetutor.application.service.CustomDefaultOAuth2UserService;
 
-@Configuration
-@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -19,6 +17,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     DBSavedRequestAwareAuthenticationSuccessHandler DBSuccessHandler;
+    
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -28,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/h2-console/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
-		.formLogin().failureUrl("/login-failed").loginPage("/login").defaultSuccessUrl("/home").successHandler(DBSuccessHandler).permitAll()
+		.formLogin().failureUrl("/login-failed").loginPage("http://localhost:3000/login").defaultSuccessUrl("http://localhost:3000/").successHandler(DBSuccessHandler).permitAll()
 		.and().oauth2Login().loginPage("/login/oauth2/**").defaultSuccessUrl("/home").userInfoEndpoint().userService(oauth2UserService)
 		.and().successHandler(OAuth2SuccessHandler).permitAll()
 		.and()

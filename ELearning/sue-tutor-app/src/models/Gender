@@ -1,9 +1,0 @@
-export default class Gender {
-    static Male = new Gender('male');
-    static Female = new Gender('female');
-    gender: any;
-    
-    constructor(gender) {
-        this.gender = gender;
-    }
-}

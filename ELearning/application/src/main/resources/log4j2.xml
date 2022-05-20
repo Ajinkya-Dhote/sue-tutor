@@ -3,6 +3,7 @@
     <Properties>
         <Property name="LOG_PATTERN">%d{DATE} [${sys:PID}] [%t] %-5p %c-[%L] %X - %m%n</Property>
         <Property name="APP_LOG_ROOT">${log4j:configParentLocation}</Property>
+        <Property name="BASE_PATH">/home/ajinkya/ajinkya/logs</Property>
     </Properties>
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
@@ -10,8 +11,8 @@
         </Console>
   
         <RollingFile name="file"
-            fileName="${APP_LOG_ROOT}/application.log"
-            filePattern="${APP_LOG_ROOT}/application-%d{yyyy-MM-dd}-%i.log">
+            fileName="${BASE_PATH}/application.log"
+            filePattern="${BASE_PATH}/application-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout pattern="${LOG_PATTERN}" />
             <Policies>
                 <SizeBasedTriggeringPolicy size="19500KB" />
@@ -28,5 +29,8 @@
         <Logger name="org.springframework" level="ERROR"></Logger>
         <Logger name="org.hibernate" level="ERROR"></Logger>
         <Logger name="com.suniteducation" level="DEBUG"></Logger>
+    	<Logger name="org.hibernate" level="info" additivity="false">
+      		<AppenderRef ref="Console" />
+    	</Logger>
     </Loggers>
 </Configuration>

@@ -1,8 +1,13 @@
+graphql:
+  graphiql:
+    enabled: true
+
 server:
   port: 8286
   servlet:
     session:
       timeout: 2m
+    context-path: "/app"
 
 spring:
   security:
@@ -15,15 +20,22 @@ spring:
           scope:
            - email
            - profile
+  devtools:
+    restart:
+      exclude: logs/**,static/**,public/**
   datasource:
-    url: jdbc:h2:mem:mydb;IFEXISTS=FALSE;
-    username: sa
-    password:
-    driverClassName: org.h2.Driver
+    url: jdbc:postgresql://localhost:5432/mydb
+    username: myuser
+    password: mypassword
+    driver-class-name: org.postgresql.Driver 
   jpa:
-    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
   h2:
     console:
       enabled: true
       settings:
         web-allow-others: true
+        
+secret: randomsecret

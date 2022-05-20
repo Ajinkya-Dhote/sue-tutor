@@ -1,6 +1,6 @@
 package com.suetutor.model;
 
-public enum USerType {
+public enum Type {
 	STUDENT,
 	TEACHER,
 	ADMIN,
