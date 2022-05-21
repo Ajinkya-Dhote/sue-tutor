@@ -5,7 +5,7 @@ import { sueAuthProvider } from "./auth";
 export let AuthContext = React.createContext();
 
 function AuthProvider({ children }) {
-    let [user, setUser] = React.useState(null);
+    let [user, setUser] = React.useState(localStorage.getItem("user"));
   
     let signin = (newUser, callback) => {
       return sueAuthProvider.signin(() => {

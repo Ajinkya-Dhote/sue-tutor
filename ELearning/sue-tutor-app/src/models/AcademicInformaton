@@ -1,0 +1,25 @@
+class AcademicInformation {
+    private _qualification;
+    private _year;
+
+    build({qualification, year}) {
+        this._qualification = qualification;
+        this._year = year;
+    }
+
+    public get qualification() {
+        return this._qualification;
+    }
+
+    public set qualification(value) {
+        this._qualification = value;
+    }
+   
+    public get year() {
+        return this._year;
+    }
+
+    public set year(value) {
+        this._year = value;
+    }
+}

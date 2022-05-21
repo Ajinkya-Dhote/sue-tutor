@@ -12,7 +12,11 @@ import PreferedSubject from '../common/PreferedSubject';
 
 export default function ProfileSetttings() {
     const dispatch = useDispatch();
-    const { loading, error, data } = useQuery(GET_USER);
+    const { loading, error, data } = useQuery(GET_USER, {
+        variables: {
+            username: localStorage.getItem("user")
+        }
+    });
     let user;
     let contact;
     if (data && data.userByUsername) {
@@ -45,6 +49,9 @@ export default function ProfileSetttings() {
                 <ContactInfo data={contact}/>
                 <AcademicInfo />
                 <PreferedSubject />
+                <Box sx={{
+                    height: "40px"
+                }}></Box>
             </Box>
         )
     }

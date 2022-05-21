@@ -1,20 +1,20 @@
-import { Box, Button, Divider, Grid, IconButton, Stack, TextField, Typography } from "@mui/material";
-import { blueGrey, cyan } from "@mui/material/colors";
-import logo from '../../sue-logo.jpg';
-import GoogleIcon from '@mui/icons-material/Google';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import FaceIcon from '@mui/icons-material/Face';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import GoogleIcon from '@mui/icons-material/Google';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import { Box, Button, Divider, Grid, IconButton, Stack, TextField, Typography } from "@mui/material";
+import { blueGrey } from "@mui/material/colors";
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import api from "../../services/api";
-import { useState } from "react";
 import { useAuth } from "../../services/auth/RequireAuth";
-import { useLocation, useNavigate } from "react-router-dom";
+import SueTutorLogo from "../../svg-icon/SueTutorLogo";
 
 function Login() {
   const loginBackGroundColor = blueGrey[50];
-  const backgroundColor = cyan[500];
+  const backgroundColor = "#455a64";
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -26,7 +26,6 @@ function Login() {
   let from = location.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {
-    console.log(event, username, password);
     api({
       method: "post",
       url: "/app/login",
@@ -35,8 +34,6 @@ function Login() {
         "password": password
       }
     }).then(res => {
-     
-      console.log(auth);
       auth.signin(username, () => {
         if (res.data.token) {
           localStorage.setItem("token", res.data.token);
@@ -44,7 +41,7 @@ function Login() {
         }
         navigate(from, { replace: true });
       })
-     
+
     }).catch(error => console.log(error))
   }
 
@@ -84,18 +81,21 @@ function Login() {
       >
 
         <Box
-          component="img"
+          // component="svg"
           xs={6}
-          src={logo}
+          // src={SueTutorLogo}
+          alignItems="center"
           sx={{
             height: 233,
             width: 233,
             maxHeight: { xs: 233, md: 250 },
             maxWidth: { xs: 350, md: 250 },
             borderRadius: 5,
-            backgroundColor: loginBackGroundColor,
+            // backgroundColor: loginBackGroundColor,
           }}
-        ></Box>
+        >
+          <SueTutorLogo width="233" height="233" />
+        </Box>
 
         <Box
           component="form"
