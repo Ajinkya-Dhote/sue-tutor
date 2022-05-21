@@ -33,6 +33,8 @@ import SettingsHome from './components/Settings/SettingsHome';
 import AppSettings from './components/Settings/AppSettings';
 import ProfileSetttings from './components/Settings/ProfileSettings';
 import Login from './components/Login/Login';
+import AuthProvider from './services/auth/AuthProvider';
+import RequireAuth from './services/auth/RequireAuth';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -48,12 +50,13 @@ const client = new ApolloClient({
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
+        <AuthProvider>
         <Provider store={store}>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<App/>}>
+              <Route path="/" element={ <RequireAuth> <App/> </RequireAuth>}>
                 <Route path="about" element={<About />} />
-                <Route path="settings" element={<SettingsHome />}>
+                <Route path="settings" element={<RequireAuth> <SettingsHome /> </RequireAuth>}>
                   <Route index element={<ProfileSetttings />}> </Route>
                   <Route path="app-settings" element={<AppSettings />}> </Route>
                 </Route>
@@ -64,7 +67,8 @@ root.render(
               
             </Routes>
           </BrowserRouter>
-        </Provider>
+          </Provider>
+        </AuthProvider>
     </ApolloProvider>
   </React.StrictMode>
 );  

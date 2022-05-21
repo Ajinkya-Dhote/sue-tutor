@@ -9,6 +9,8 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import api from "../../services/api";
 import { useState } from "react";
+import { useAuth } from "../../services/auth/RequireAuth";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Login() {
   const loginBackGroundColor = blueGrey[50];
@@ -16,6 +18,12 @@ function Login() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  let auth = useAuth();
+  let location = useLocation();
+  let navigate = useNavigate();
+
+  let from = location.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {
     console.log(event, username, password);
@@ -27,9 +35,17 @@ function Login() {
         "password": password
       }
     }).then(res => {
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", username);
-    })
+     
+      console.log(auth);
+      auth.signin(username, () => {
+        if (res.data.token) {
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("user", username);
+        }
+        navigate(from, { replace: true });
+      })
+     
+    }).catch(error => console.log(error))
   }
 
 
