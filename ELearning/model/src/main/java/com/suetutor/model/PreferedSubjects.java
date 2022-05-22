@@ -1,9 +1,9 @@
 package com.suetutor.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,8 +13,9 @@ import lombok.ToString;
 
 @Data
 @ToString
-@Entity(name = "ACADEMIC_INFORMATION")
-public class AcademicInformation {
+@Entity(name = "PREFERED_SUBJECTS")
+public class PreferedSubjects {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
@@ -23,10 +24,5 @@ public class AcademicInformation {
 	@Column(name = "USER_ID")
 	private Long userId;
 	
-	@Column(name= "qualification")
-	@Enumerated(EnumType.STRING)
-	private Qualification qualification;
-	
-	@Column(name= "year")
-	private String year;
+//	private List<Course> courses; 
 }

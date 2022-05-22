@@ -9,7 +9,7 @@ const resources = {
     translation: {
       "welcome": "Welcome",
       "login": "Login",
-      "personal-info": "",
+      "personal-info": "Personal Info",
       "name": "Name",
       "middleName": "Middle Name",
       "surname": "Surname",
@@ -32,7 +32,7 @@ const resources = {
     translation: {
         "welcome": "स्वागत",
         "login": "लॉगिन",
-        "personal-info": "",
+        "personal-info": "व्यक्तिगत जानकारी",
         "name": "नाम",
         "middleName": "मध्य नाम",
         "surname": "उपनाम",
@@ -55,7 +55,7 @@ const resources = {
     translation: {
       "welcome": "स्वागत",
       "login": "लॉगिन",
-      "personal-info": "",
+      "personal-info": "वैयक्तिक माहिती",
       "name": "नाव",
       "middleName": "मधले नाव",
       "surname": "आडनाव",

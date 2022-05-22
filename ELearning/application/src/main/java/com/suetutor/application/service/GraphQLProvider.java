@@ -45,11 +45,9 @@ public class GraphQLProvider {
 
 	private RuntimeWiring buildWiring() {
 		return RuntimeWiring.newRuntimeWiring()
-				.type(newTypeWiring("Query").dataFetcher("bookById", graphQLDataFetchers.getBookByIdDataFetcher()))
 				.type(newTypeWiring("Query").dataFetcher("users", graphQLDataFetchers.getUsersDataFetcher()))
 				.type(newTypeWiring("Query").dataFetcher("userByUsername", graphQLDataFetchers.getUserByIdDataFetcher()))
-				.type(newTypeWiring("User").dataFetcher("contact", graphQLDataFetchers.getContactDataFetcher()))
-				.type(newTypeWiring("Book").dataFetcher("author", graphQLDataFetchers.getAuthorDataFetcher())).build();
+				.type(newTypeWiring("User").dataFetcher("contact", graphQLDataFetchers.getContactDataFetcher())).build();
 	}
 
 	@Bean

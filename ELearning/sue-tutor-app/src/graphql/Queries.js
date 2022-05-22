@@ -8,6 +8,7 @@ export const GET_USER = gql `
                 lastName
                 age
                 gender
+                type
                 contact {
                     userId,
                     email,

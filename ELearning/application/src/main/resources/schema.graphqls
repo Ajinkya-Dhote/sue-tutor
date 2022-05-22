@@ -1,22 +1,7 @@
 type Query {
-    bookById(id: ID): Book
     users: [User]
     userByUsername(username: String): User
 }
-
-type Book {
-    id: ID
-    name: String
-    pageCount: Int
-    author: Author
-}
-
-type Author {
-    id: ID
-    firstName: String
-    lastName: String
-}
-
 
 type User {
 	id: ID!
@@ -29,8 +14,9 @@ type User {
 	password: String,
 	createdOn: Float,
 	modifiedOn: Float,
-	lastLoginTime: Float
-	contact: Contact
+	lastLoginTime: Float,
+	contact: Contact,
+	type: String
 }
 
 type Contact {
