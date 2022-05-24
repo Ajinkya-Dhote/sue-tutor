@@ -12,19 +12,41 @@ import MiniDrawer from './component/MiniDrawer';
 import { Student } from './component/Student';
 import { Teacher } from './component/Teacher';
 import { Admin } from './component/Admin';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql
+} from "@apollo/client";
+import Login from './component/Login/Login';
+import AuthProvider from './services/auth/AuthProvider';
+
+const client = new ApolloClient({
+  uri: '/app/graphql',
+  cache: new InMemoryCache(),
+  headers: {
+    authorization: "Bearer "+ localStorage.getItem("token")
+  }
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-          <Routes>
-                <Route path="/" element={<MiniDrawer/> } >
-                  <Route path="student" element={<Student/>} />
-                  <Route path="teacher" element={<Teacher/> }/>
-                  <Route path="admin" element={<Admin/> } />
-                </Route>         
-          </Routes>
-    </BrowserRouter>
+     <ApolloProvider client={client}>
+     <AuthProvider>
+        <BrowserRouter>
+              <Routes>
+                    <Route path="/" element={<MiniDrawer/> } >
+                      <Route path="student" element={<Student/>} />
+                      <Route path="teacher" element={<Teacher/> }/>
+                      <Route path="admin" element={<Admin/> } />
+                    </Route>
+                    <Route path="/login" element={<Login />} />
+              </Routes>
+        </BrowserRouter>
+        </AuthProvider>
+    </ApolloProvider>
   </React.StrictMode>
 );
 
