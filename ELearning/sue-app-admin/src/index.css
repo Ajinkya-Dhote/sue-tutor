@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  align-items: stretch;
+}
+
+.center {
+  margin: auto;
+}
+
+.fil2 {fill:#FEFEFE}
+.fil1 {fill:#EF7F1A}
+.fil0 {fill:#26A59A}
+.fnt1 {font-weight:bold;font-size:210.344px;font-family:'Arial'}
+.fnt0 {font-weight:normal;font-size:510.299px;font-family:'Superclarendon Rg'}

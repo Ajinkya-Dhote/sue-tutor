@@ -17,13 +17,14 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-
+import LogoutIcon from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
 import AdminIcon from '@mui/icons-material/ManageAccounts';
 import TeacherIcon from '@mui/icons-material/School';
 import { Link, Outlet } from 'react-router-dom';
 
 import { useNavigate } from "react-router-dom";
+import { useAuth } from '../services/auth/RequireAuth';
 
 const drawerWidth = 240;
 
@@ -92,9 +93,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
+
+
 export default function MiniDrawer() {
   let navigate = useNavigate();
-
+  let auth = useAuth();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -105,6 +108,13 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const handelLogout = (event) => {
+    auth.signout(() => {
+      localStorage.clear();
+      navigate("/login")
+    })
+  }
 
   const menu = [
     {
@@ -125,7 +135,7 @@ export default function MiniDrawer() {
   ]
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex'}}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -141,9 +151,22 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div"  sx={{ flexGrow: 1 }}>
             Dashboard
           </Typography>
+
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handelLogout}
+            // edge="end"
+            sx={{
+              marginRight: 5,
+              ...(open && { display: 'none' }),
+            }}
+          >
+            <LogoutIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
