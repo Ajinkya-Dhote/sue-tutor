@@ -1,29 +1,20 @@
 import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import { ALL_STUDENTS } from '../graphql/StudentQueries';
 import {useQuery} from "@apollo/client";
-import { Skeleton } from '@mui/material';
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
+import { Divider, Paper, Skeleton, Typography, useTheme } from '@mui/material';
+import { SueTable } from './common/SueTable';
+import { NumberCard } from './common/NumberCard';
+import { Box } from '@mui/system';
+import { HeaderStripe } from './common/HeaderStripe';
 
-// const rows = [
-//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-//   createData('Eclair', 262, 16.0, 24, 6.0),
-//   createData('Cupcake', 305, 3.7, 67, 4.3),
-//   createData('Gingerbread', 356, 16.0, 49, 3.9),
-// ];
 
-let rows = [];
 
 export function Student() {
+    let rows = [];
+    let headers = [];
+    const theme = useTheme();
+
+    console.log(theme.palette.primary);
 
     const { loading, error, data } = useQuery(ALL_STUDENTS);
 
@@ -37,37 +28,18 @@ export function Student() {
             
         );
     } else {
-        rows = [...data.users]
-
+        headers = ['Name', 'Address', 'Phone'];
+        rows = [];
+        data.users
+            .filter(r => r.type === 'STUDENT')
+            .map(r => rows.push({'Name': `${r.firstName} ${r.lastName}`, 'Email': r.contact.email, 'Address': r.contact.address, 'Phone': r.contact.mobileNumber}))
     }
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell align="center">Name</TableCell>
-            <TableCell align="center">Email</TableCell>
-            <TableCell align="center">Address</TableCell>
-            <TableCell align="center">Phone</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell align="center">
-              {row.firstName} {row.lastName}
-              </TableCell>
-              <TableCell align="center">{row.contact.email}</TableCell>
-              <TableCell align="center">{row.contact.address}</TableCell>
-              <TableCell align="center">{row.contact.mobileNumber}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <>
+            <HeaderStripe title='Students' />
+            <NumberCard description='Total' number={rows.length}/>
+            <SueTable headers={headers} rows={rows} />
+        </>
   );
 }
