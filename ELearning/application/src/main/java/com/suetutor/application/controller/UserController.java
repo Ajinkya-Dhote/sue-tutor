@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,31 +19,38 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.suetutor.model.User;
 import com.suetutor.service.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 @Controller
 @RequestMapping("/user")
+@Slf4j
 public class UserController {
-
-	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
 	@Autowired
 	private UserService userService;
 
-	@GetMapping("/fetch")
+	@GetMapping("/")
 	@ResponseBody List<User> fetch() {
-		LOGGER.info("fetchAll()");
+		log.info("fetchAll()");
 		return userService.fetchAll();
 	}
 
-	@GetMapping("/fetch/{id}")
+	@GetMapping("/{id}")
 	@ResponseBody User fetch(@PathVariable Long id) {
-		LOGGER.info("fetch({})", id);
+		log.info("fetch({})", id);
 		return userService.fetch(id);
+	}
+	
+	@PutMapping("/")
+	ResponseEntity<Object> updateUser(@RequestBody User user) {
+		userService.update(user);
+		return ResponseEntity.ok().build();
 	}
 
 	@PostMapping(value = "/register")
 	@ResponseBody ResponseEntity<?> register(User user) {
-		LOGGER.info("register({})", user);
+		log.info("register({})", user);
 		userService.save(user);
 		return ResponseEntity.ok().build();
 	}

@@ -22,6 +22,7 @@ const resources = {
       "phone-number": "Phone Number",
       "location": "Location",
       "academic-info": "Academic Information",
+      "education-board": "Education Board",
       "academic-qualification": "Academic Qualification",
       "academic-year": "Academic Year",
       "prefered-subjects": "Prefered Subjects",

@@ -28,17 +28,20 @@ export default function ContactInfo(props) {
     const dispatch = useDispatch();
     const handleEmailChange = (event) => {
         setEmail(event.target.value);
-        dispatch(setEmailInStore(event.target.value))
+        contact.email = event.target.value;
+        props.onChange(contact);
     }
 
     const handlePhoneNumberChange = (event) => {
         setPhoneNumber(event.target.value);
-        dispatch(setPhoneNumberInStore(event.target.value))
+        contact.phoneNumber = event.target.value;
+        props.onChange(contact);
     }
 
     const handleLocationChange = (event) => {
         setLocation(event.target.value);
-        dispatch(setLocationInStore(event.target.value))
+        contact.location = event.target.value;
+        props.onChange(contact);
     }
 
     return (

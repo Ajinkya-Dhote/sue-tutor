@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { ALL_STUDENTS } from '../graphql/StudentQueries';
+import { ALL_USERS } from '../graphql/StudentQueries';
 import {useQuery} from "@apollo/client";
 import { Divider, Paper, Skeleton, Typography, useTheme } from '@mui/material';
 import { SueTable } from './common/SueTable';
 import { NumberCard } from './common/NumberCard';
 import { Box } from '@mui/system';
 import { HeaderStripe } from './common/HeaderStripe';
+import { TitleBarService } from '../services/TitleBarService';
 
 
 
@@ -14,9 +15,8 @@ export function Student() {
     let headers = [];
     const theme = useTheme();
 
-    console.log(theme.palette.primary);
-
-    const { loading, error, data } = useQuery(ALL_STUDENTS);
+    const { loading, error, data } = useQuery(ALL_USERS);
+    TitleBarService.setTitle('Students');
 
     if (data == undefined) {
         return (
@@ -37,7 +37,6 @@ export function Student() {
 
   return (
     <>
-            <HeaderStripe title='Students' />
             <NumberCard description='Total' number={rows.length}/>
             <SueTable headers={headers} rows={rows} />
         </>

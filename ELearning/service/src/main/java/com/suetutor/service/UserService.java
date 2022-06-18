@@ -2,6 +2,8 @@ package com.suetutor.service;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.suetutor.model.User;
 
 public interface UserService {
@@ -15,4 +17,6 @@ public interface UserService {
 	void save(User user);
 	
 	List<User> fetchAll();
+
+	void update(User user);
 }

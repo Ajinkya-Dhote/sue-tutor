@@ -1,11 +1,12 @@
+import { CssBaseline } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import React from 'react';
-import './App.css';
+import { useSelector } from 'react-redux';
 import { Outlet } from "react-router-dom";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import './App.css';
+import BottomNavBar from './components/BottomNavBar/BottomNavBar';
 import Header from './components/Header/Header';
 
-import { useSelector } from 'react-redux'
-import {CssBaseline } from '@mui/material';
 
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
         <div className="app">
           <Header />
           <Outlet />
+          <BottomNavBar />
         </div>
         
       </ThemeProvider>

@@ -1,40 +1,36 @@
-import React from 'react';
-import ReactDOM from "react-dom/client";
 import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
-import './index.css';
-import App from './App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals';
-import './i18n';
-import { Provider } from 'react-redux'
-
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  useQuery,
-  gql
+  ApolloClient, ApolloProvider, InMemoryCache
 } from "@apollo/client";
-
-import store from './store/store';
-
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-
-
+import React from 'react';
+import ReactDOM from "react-dom/client";
+import { Provider } from 'react-redux';
+import {
+  BrowserRouter, Route, Routes
+} from "react-router-dom";
+import App from './App';
 import About from './components/About/About';
-import SettingsHome from './components/Settings/SettingsHome';
+import Home from './components/Home/Home';
+import Login from './components/Login/Login';
 import AppSettings from './components/Settings/AppSettings';
 import ProfileSetttings from './components/Settings/ProfileSettings';
-import Login from './components/Login/Login';
+import SettingsHome from './components/Settings/SettingsHome';
+import Courses from "./Courses/Courses";
+import './i18n';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
 import AuthProvider from './services/auth/AuthProvider';
 import RequireAuth from './services/auth/RequireAuth';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import store from './store/store';
+
+
+
+
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -55,8 +51,10 @@ root.render(
           <BrowserRouter>
             <Routes>
               <Route path="/" element={ <RequireAuth> <App/> </RequireAuth>}>
+                <Route index element={<Home />} />
                 <Route path="about" element={<About />} />
-                <Route path="settings" element={<RequireAuth> <SettingsHome /> </RequireAuth>}>
+                <Route path="courses" element={<Courses />} />
+                <Route path="settings" element={<SettingsHome />}>
                   <Route index element={<ProfileSetttings />}> </Route>
                   <Route path="app-settings" element={<AppSettings />}> </Route>
                 </Route>

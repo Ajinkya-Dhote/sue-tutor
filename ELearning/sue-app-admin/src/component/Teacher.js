@@ -1,16 +1,17 @@
 import * as React from 'react';
-import { ALL_STUDENTS } from '../graphql/StudentQueries';
+import { ALL_USERS } from '../graphql/StudentQueries';
 import {useQuery} from "@apollo/client";
 import { Skeleton, Typography } from '@mui/material';
 import { SueTable } from './common/SueTable';
 import { HeaderStripe } from './common/HeaderStripe';
 import { NumberCard } from './common/NumberCard';
+import { TitleBarService } from '../services/TitleBarService';
 
 export function Teacher() {
     let rows = [];
     let headers = [];
-    const { loading, error, data } = useQuery(ALL_STUDENTS);
-
+    const { loading, error, data } = useQuery(ALL_USERS);
+    TitleBarService.setTitle('Teachers');
     if (data == undefined) {
         return (
             <>
@@ -30,7 +31,6 @@ export function Teacher() {
 
   return (
     <>
-            <HeaderStripe title='Teachers' />           
             <NumberCard description='Total' number={rows.length}/>
             <SueTable headers={headers} rows={rows} />
         </>

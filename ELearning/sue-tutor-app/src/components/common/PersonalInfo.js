@@ -39,27 +39,32 @@ export default function PersonalInfo(props) {
 
     const handleNameChnage = (event) => {
         setFirstName(event.target.value);
-        dispatch(setNameInStore(event.target.value))
+        user.firstName = event.target.value;
+        props.onChange(user.toJson());
     }
 
     const handleMiddleNameChnage = (event) => {
         setMiddleName(event.target.value);
-        dispatch(setMiddleNameInStore(event.target.value))
+        user.middleName = event.target.value;
+        props.onChange(user.toJson());
     }
 
     const handleSurnameChnage = (event) => {
         setLastName(event.target.value);
-        dispatch(setSurNameInStore(event.target.value))
+        user.lastName = event.target.value;
+        props.onChange(user.toJson());
     }
 
     const handleAgeChane = (event) => {
         setAge(event.target.value);
-        dispatch(setAgeInStore(event.target.value))
+        user.age = event.target.value;
+        props.onChange(user.toJson());
     }
 
     const handleGenderChange = (event) => {
         setGender(event.target.value);
-        dispatch(setGenderInStore(event.target.value));
+        user.gender = event.target.value;
+        props.onChange(user.toJson());
     }
 
     return (
