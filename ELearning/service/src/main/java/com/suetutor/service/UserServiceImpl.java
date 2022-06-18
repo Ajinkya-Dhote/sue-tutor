@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 import com.suetutor.dao.UserRepository;
 import com.suetutor.model.User;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -52,5 +55,23 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User fetchByUsername(String username) {
 		return repo.findByUsername(username);
+	}
+
+	@Override
+	public void update(User user) {
+		log.info("update user: {}", user);
+		Long id = user.getId();
+		User existingUser = repo.findById(id).orElseGet(null);
+		if (existingUser != null) {
+			existingUser.setId(user.getId());
+			existingUser.setFirstName(user.getFirstName());
+			existingUser.setMiddleName(user.getMiddleName());
+			existingUser.setLastName(user.getLastName());
+			existingUser.setGender(user.getGender());
+			existingUser.setAge(user.getAge());
+			existingUser.setBoard(user.getBoard());
+			existingUser.setGrade(user.getGrade());
+			repo.save(existingUser);
+		}
 	}
 }

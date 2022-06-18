@@ -1,6 +1,7 @@
 type Query {
     users: [User]
     userByUsername(username: String): User
+    courses: [Course]
 }
 
 type User {
@@ -16,7 +17,9 @@ type User {
 	modifiedOn: Float,
 	lastLoginTime: Float,
 	contact: Contact,
-	type: String
+	type: String,
+	grade: String,
+	board: String
 }
 
 type Contact {
@@ -25,4 +28,11 @@ type Contact {
 	email: String,
 	mobileNumber: Float,
 	address: String
+}
+
+type Course {
+	id: ID,
+	name: String,
+	description: String
+	grade: String
 }

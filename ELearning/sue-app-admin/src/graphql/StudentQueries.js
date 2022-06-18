@@ -20,7 +20,7 @@ export const GET_USER = gql `
     }
 `;
 
-export const ALL_STUDENTS = gql `
+export const ALL_USERS = gql `
     query getAllUsers {
         users {
             firstName

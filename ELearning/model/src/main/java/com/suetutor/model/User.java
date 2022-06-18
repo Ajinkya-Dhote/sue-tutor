@@ -65,6 +65,14 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	private Type Type;
 	
+	@Column(name = "BOARD")
+	@Enumerated(EnumType.STRING)
+	private Board board;
+	
+	@Column(name = "GRADE")
+	@Enumerated(EnumType.STRING)
+	private Grade grade;
+	
 //	@OneToOne(cascade =  CascadeType.ALL)
 //	@JoinColumn(name = "contact_id", referencedColumnName = "id")
 //	private Contact contact;

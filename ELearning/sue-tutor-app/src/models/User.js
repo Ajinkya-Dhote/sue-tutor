@@ -1,18 +1,46 @@
 class User {
+    _id;
     _firstName;
     _middleName;
     _lastName;
     _age;
     _gender;
+    _grade;
+    _board;
+
     
     constructor () {}
 
-    build ({firstName, middleName, lastName, age, gender}) {
+    build ({id, firstName, middleName, lastName, age, gender, grade, board}) {
+        this._id = id;
         this._firstName = firstName;
         this._middleName = middleName;
         this._lastName = lastName;
         this._age = age;
         this._gender = gender;
+        this._grade = grade;
+        this._board = board;
+    }
+
+    toJson() {
+        return {
+           id: this._id,
+           firstName: this._firstName,
+           lastName: this.lastName,
+           middleName: this.middleName,
+           age: this.age,
+           gender: this.gender,
+           grade: this.grade,
+           board: this.board
+        }
+    }
+
+    get id() {
+        return this._id;
+    }
+    
+    set id(value) {
+        this._id = value;
     }
 
     get firstName() {
@@ -54,6 +82,21 @@ class User {
     set gender(value) {
         this._gender = value;
     }
+
+    get grade() {
+        return this._grade;
+    }
+    set grade(value) {
+        this._grade = value;
+    }
+    
+    get board() {
+        return this._board;
+    }
+    set board(value) {
+        this._board = value;
+    }
+
 
     
 }

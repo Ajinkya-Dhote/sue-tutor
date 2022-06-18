@@ -22,6 +22,8 @@ import {
 import Login from './component/Login/Login';
 import AuthProvider from './services/auth/AuthProvider';
 import RequireAuth from './services/auth/RequireAuth';
+import { CourseHome } from './component/course/CourseHome';
+import { Home } from './component/home/Home';
 
 const client = new ApolloClient({
   uri: '/app/graphql',
@@ -39,9 +41,11 @@ root.render(
         <BrowserRouter>
               <Routes>
                     <Route path="/" element={<RequireAuth> <MiniDrawer/> </RequireAuth> } >
+                      <Route index element={<Home />} />
                       <Route path="student" element={<Student/>} />
                       <Route path="teacher" element={<Teacher/> }/>
                       <Route path="admin" element={<Admin/> } />
+                      <Route path="course" element={<CourseHome/>} ></Route>
                     </Route>
                     <Route path="/login" element={<Login />} />
               </Routes>

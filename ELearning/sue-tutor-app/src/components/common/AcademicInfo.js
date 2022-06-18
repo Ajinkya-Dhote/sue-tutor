@@ -1,57 +1,80 @@
 import { InputLabel, MenuItem, Paper, Select, Typography } from "@mui/material";
 import FormControl from '@mui/material/FormControl';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { setAcademicQualification, setAcademicYear } from "../../store/features/customerSlice";
 
-export default function AcademicInfo() {
+export default function AcademicInfo(props) {
     const { t } = useTranslation();
     const academicQualification = [
         {
-            name: 'School',
-            value: 'school'
+            name: 'CBSE',
+            value: 'CBSE'
         },
         {
-            name: 'Graduation',
-            value: 'graduation'
+            name: 'ISCE',
+            value: 'ICSE'
         },
         {
-            name: 'Post Graduation',
-            value: 'postGraduation'
+            name: 'Maharashtra Board',
+            value: 'MAHARASHTRA_BOARD'
         },
     ]
     const academicYears = [
         {
-            name: '1st Standard',
-            value: '1s'
+            name: '1st Grade',
+            value: 'FIRST_GRADE'
         }, {
-            name: '2nd Standard',
-            value: '2s'
+            name: '2nd Grade',
+            value: 'SECOND_GRADE'
         }, {
-            name: '3rd Standard',
-            value: '3s'
+            name: '3rd Grade',
+            value: 'THIRD_GRADE'
         }, {
-            name: '4th Standard',
-            value: '4s'
-        },
+            name: '4th Grade',
+            value: 'FOURTH_GRADE'
+        }, {
+            name: '5th Grade',
+            value: 'FIFTH_GRADE'
+        }, {
+            name: '6th Grade',
+            value: 'SIXTH_GRADE'
+        }, {
+            name: '7th Grade',
+            value: 'SEVENTH_GRADE'
+        }, {
+            name: '8th Grade',
+            value: 'EIGHT_GRADE'
+        }, {
+            name: '9th Grade',
+            value: 'NINTH_GRADE'
+        }, {
+            name: '10th Grade',
+            value: 'TENTH_GRADE'
+        }
     ];
 
     const dispatch = useDispatch();
 
 
-    const info = useSelector(state => state.customer.info);
-    const [qualification, setQualification] = useState(info.academic.qualification);
-    const [year, setYear] = useState(info.academic.year);
+    const user = props.data;
+    const [board, setEducationalBoard] = useState('');
+    const [year, setGrade] = useState('');
+    useEffect(() => {
+        setEducationalBoard(user.board);
+        setGrade(user.grade)
+    }, [user])
 
-    const handleQualificationChange = (event) => {
-        setQualification(event.target.value);
-        dispatch(setAcademicQualification(event.target.value))
+    const handleEducationalBoardChange = (event) => {
+        setEducationalBoard(event.target.value);
+        user.board = event.target.value;
+        props.onChange(user.toJson());
     }
 
-    const handleYearChange = (event) => {
-        setYear(event.target.value);
-        dispatch(setAcademicYear(event.target.value))
+    const handleGradeChange = (event) => {
+        setGrade(event.target.value);
+       user.grade = event.target.value;
+       props.onChange(user.toJson());
     }
 
     return (
@@ -60,13 +83,13 @@ export default function AcademicInfo() {
         >
             <Typography>{t('academic-info')}</Typography>
             <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">{t('academic-qualification')}</InputLabel>
+                <InputLabel id="demo-simple-select-label">{t('education-board')}</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    value={qualification}
-                    label={t('academic-qualification')}
-                    onChange={handleQualificationChange}
+                    value={board}
+                    label={t('education-board')}
+                    onChange={handleEducationalBoardChange}
                 >
                     {academicQualification.map((a) => <MenuItem key={a.name} value={a.value}>{a.name}</MenuItem>)}
                 </Select>
@@ -79,7 +102,7 @@ export default function AcademicInfo() {
                     id="demo-simple-select"
                     value={year}
                     label={t('academic-year')}
-                    onChange={handleYearChange}
+                    onChange={handleGradeChange}
                 >
                     {academicYears.map((a) => <MenuItem key={a.name} value={a.value}>{a.name}</MenuItem>)}
                 </Select>
