@@ -37,5 +37,9 @@ spring:
       enabled: true
       settings:
         web-allow-others: true
+  mail:
+    host: smtp.gmail.com
+    port: 465
+from.email: XXXXXX@gmail.com
         
 secret: randomsecret

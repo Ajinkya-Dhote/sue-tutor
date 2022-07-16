@@ -24,10 +24,16 @@ public class Contact {
 	
 	@Column(name = "EMAIL")
 	private String email;
-	
+
+	@Column(name="EMAIL_VALIDATED")
+	private boolean emailValidated;
+
 	@Column(name = "MOBILE_NUMBER")
 	private Long mobileNumber;
-	
+
+	@Column(name="MOBILE_NUMBER_VALIDATED")
+	private boolean mobileNumberValidated;
+
 	@Column(name = "ADDRESS")
 	private String address;
 	

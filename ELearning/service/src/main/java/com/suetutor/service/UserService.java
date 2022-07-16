@@ -19,4 +19,8 @@ public interface UserService {
 	List<User> fetchAll();
 
 	void update(User user);
+
+	String verifyEmail(Long userId);
+
+	boolean validateOTP(Long userId, String otp);
 }

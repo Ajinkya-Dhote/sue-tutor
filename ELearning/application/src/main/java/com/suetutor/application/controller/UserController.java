@@ -54,4 +54,15 @@ public class UserController {
 		userService.save(user);
 		return ResponseEntity.ok().build();
 	}
+
+	@PostMapping("/verify-email")
+	public ResponseEntity<String> verifyEmail(Long userId) {
+		return ResponseEntity.ok(userService.verifyEmail(userId));
+	}
+
+	@PostMapping("/validate-otp")
+	public ResponseEntity<String> validateOTP(Long userId, String otp) {
+		userService.validateOTP(userId,otp);
+		return ResponseEntity.ok("OTP verified successfully");
+	}
 }
