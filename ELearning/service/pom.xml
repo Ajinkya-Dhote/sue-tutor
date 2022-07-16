@@ -31,7 +31,12 @@
 			<artifactId>lombok</artifactId>
 			<version>1.18.22</version>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>com.suetutor</groupId>
+			<artifactId>core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		<!-- Dao -->
 		<dependency>
 			<groupId>com.suetutor</groupId>
